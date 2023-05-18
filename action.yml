@@ -3,8 +3,17 @@ description: 'Sets up Google repo'
 inputs:
   repo-version:
     description: 'Version of repo to use'
-    required: true
+    required: false
     default: 'latest'
+  git-name:
+    description: 'The name for git to use'
+    required: false
+    default: 'Automation'
+  git-email:
+    description: 'Email for git to use'
+    required: false
+    default: 'nouser@domain.io'
+
 runs:
   using: 'node16'
   main: 'dist/index.js'

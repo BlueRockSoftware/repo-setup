@@ -1,5 +1,6 @@
 import * as tc from '@actions/tool-cache';
 import * as core from '@actions/core';
+import * as exec from '@actions/exec';
 import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
@@ -9,9 +10,15 @@ async function run() {
     let version = core.getInput('repo-version', { required: true });
     if (version === 'latest') {
       // replace this with code to get the latest version
-      version = '2.16';
+      version = '2.33';
     }
 
+    let name = core.getInput('git-name', { required: false });
+    let email = core.getInput('git-email', { required: false });
+
+    await exec.exec('git', ['config', '--global', "user.email", email ]);
+    await exec.exec('git', ['config', '--global', "user.name", name ]);
+    
     let toolPath = tc.find('repo', version);
 
     if (!toolPath) {

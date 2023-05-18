@@ -37,6 +37,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const tc = __importStar(__nccwpck_require__(7784));
 const core = __importStar(__nccwpck_require__(2186));
+const exec = __importStar(__nccwpck_require__(1514));
 const path = __importStar(__nccwpck_require__(1017));
 const os = __importStar(__nccwpck_require__(2037));
 const fs = __importStar(__nccwpck_require__(7147));
@@ -46,8 +47,12 @@ function run() {
             let version = core.getInput('repo-version', { required: true });
             if (version === 'latest') {
                 // replace this with code to get the latest version
-                version = '2.16';
+                version = '2.33';
             }
+            let name = core.getInput('git-name', { required: false });
+            let email = core.getInput('git-email', { required: false });
+            yield exec.exec('git', ['config', '--global', "user.email", email]);
+            yield exec.exec('git', ['config', '--global', "user.name", name]);
             let toolPath = tc.find('repo', version);
             if (!toolPath) {
                 const downloadPath = yield tc.downloadTool(`https://storage.googleapis.com/git-repo-downloads/repo`);
