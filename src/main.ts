@@ -15,7 +15,7 @@ async function run() {
     let toolPath = tc.find('repo', version);
 
     if (!toolPath) {
-      const downloadPath = await tc.downloadTool(`https://storage.googleapis.com/git-repo-downloads/repo-${version}`);
+      const downloadPath = await tc.downloadTool(`https://storage.googleapis.com/git-repo-downloads/repo`);
       const binPath = path.join(os.homedir(), 'bin');
       if (!fs.existsSync(binPath)) {
         fs.mkdirSync(binPath, {

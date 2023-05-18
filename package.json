@@ -8,7 +8,8 @@
         "check": "eslint src/**/*.ts",
         "format": "prettier --write **/*.ts",
         "lint": "eslint src/**/*.ts --quiet --fix",
-        "package": "ncc build --source-map --license licenses.txt"
+        "package": "ncc build --source-map --license licenses.txt",
+        "all": "npm run build && npm run package"
     },
     "repository": {
         "type": "git",
