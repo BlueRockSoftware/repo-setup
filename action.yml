@@ -1,0 +1,10 @@
+name: 'Setup Repo'
+description: 'Sets up Google repo'
+inputs:
+  repo-version:
+    description: 'Version of repo to use'
+    required: true
+    default: 'latest'
+runs:
+  using: 'node16'
+  main: 'lib/main.js'
