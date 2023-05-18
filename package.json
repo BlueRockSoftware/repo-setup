@@ -7,7 +7,8 @@
         "build": "tsc",
         "check": "eslint src/**/*.ts",
         "format": "prettier --write **/*.ts",
-        "lint": "eslint src/**/*.ts --quiet --fix"
+        "lint": "eslint src/**/*.ts --quiet --fix",
+        "package": "ncc build --source-map --license licenses.txt"
     },
     "repository": {
         "type": "git",
@@ -31,7 +32,8 @@
         "@typescript-eslint/parser": "^2.30.0",
         "eslint": "^6.8.0",
         "prettier": "^2.2.1",
-        "typescript": "^3.8.3"
+        "typescript": "^3.8.3",
+        "@vercel/ncc": "^0.36.1"
     },
     "dependencies": {
         "@actions/core": "^1.2.4",
